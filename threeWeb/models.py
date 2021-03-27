@@ -11,3 +11,48 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class Infomation_Post(models.Model):
+	author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	title = models.CharField("タイトル", max_length=200)
+	content = models.TextField("本文")
+	created = models.DateTimeField("作成日", default=timezone.now)
+
+	def __str__(self):
+		return self.title
+
+class Sample_Post(models.Model):
+	author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	title = models.CharField("タイトル", max_length=200)
+	content = models.TextField("本文")
+	created = models.DateTimeField("作成日", default=timezone.now)
+
+	def __str__(self):
+		return self.title
+
+
+class List_Post(models.Model):
+	author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	title = models.CharField("タイトル", max_length=200)
+	content = models.TextField("本文")
+	image = models.ImageField(upload_to='images', verbose_name='イメージ画像', null=True, blank=True)
+	created = models.DateTimeField("作成日", default=timezone.now)
+
+	def __str__(self):
+		return self.title
+
+class request_text(models.Model):
+	title = models.CharField(max_length=150)
+	text = models.TextField(blank=True)
+	image = models.ImageField(upload_to='images', null=True, blank=False)
+	created_datetime = models.DateTimeField(auto_now_add=True)
+	updated_datetime = models.DateTimeField(auto_now=True)
+	COUNTRY = (
+        ('A', 'Japan'),  # (DB値, 読みやすい値)
+        ('B', 'America'),
+        ('C', 'China'),
+    )
+	country = models.CharField(max_length=1, choices=COUNTRY)
+
+	def __str__(self):
+		return self.title

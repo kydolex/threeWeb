@@ -6,51 +6,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>ブログチュートリアル</title>
+    <link rel="shortcut icon" href="{%static 'img/3P Web_faviocon.png'%}">
+    <title>3P Web作成</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">ブログ</a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">ホーム</a>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="">投稿</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">ログアウト</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="">サインアップ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">ログイン</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+<div class="all_over">
+    <body>
+        <!--ヘッダー-->
+    <div class="header">
+            <div class="header_left">
+                <a class="header_icon" href="/"><img class="kydolex_header_log" src="{%static 'img/kydolex_white.png'%}" alt=""></a>
+            </div>
+            <div class="header_right">
+                <a class="header_list" href="{% url 'contact'%}">お問い合わせ</a>
+                <a class="header_list" href="{% url 'request'%}">作成依頼</a>
+                <a class="header_list" href="{% url 'plan'%}">参考料金</a>
+                <a class="header_list" href="{% url 'list'%}">デザイン一覧</a>
+                <a class="header_list" href="/">３P作成ホーム</a>
+            </div>
+    </div> 
+    
+    <header>
+        <div class="header-contents">
+            <a class="header_icon2" href="/"><img class="kydolex_header_log" src="{%static 'img/kydolex_white.png'%}" alt=""></a>
+            <div id="menu_btn"><i class="fas fa-bars my-gray"></i></div>
+        </div><!-- /.header-contents -->
+    </header>
+    
+      <div id="menu">
+        <ul>
+          <a href="/"><li class="hover_black_back">ホーム</li></a>
+          <a href="{% url 'list'%}"><li>デザイン一覧</li></a>
+          <a href="{% url 'plan'%}"><li>参考料金</li></a>
+          <a href="{% url 'request'%}"><li>作成依頼</li></a>
+          <a href="{% url 'contact'%}"><li>お問い合わせ</li></a>
+        </ul>
+      </div>
+      <div class="menu-background"></div>
 
-    <main>
-        <div class="container">
-            {% block content %}
-            {% endblock %}
-        </div>   
-    </main>
 
-    <footer class="py-2 bg-dark">
-        <p class="m-0 text-center text-white">Copyright &copy; Django Startup 2020</p>
-    </footer>
+        <main>
+            <!--Homeタイトル-->
+            <div class="slide"> 
+                <img src="{%static 'img/kydolex_home_title.png'%}" alt="">
+                <img src="{%static 'img/3P_sakusei_title.png'%}" alt="">
+                <img src="{%static 'img/title_6_アートボード 1.png'%}" alt="">
+            </div>
 
-    {% block extra_js %}
-    {% endblock %}
-</body>
+            <div class="left_main_body">
+                <div class="click_list_all">
+                    <div class="click_list_body">
+                        <a href=""><img class="click_design" src="{%static 'img/three_list_title_アートボード 1.png'%}" alt=""></a>
+                        <h2 class="click_text">デザイン一覧</h2>
+                        <h5 class="click_text_sub">他種多様なWebデザインのテンプレートの一覧です。あなたがWeb作成を依頼するときの参考になります。</h5>
+                        <a href="/" class="click_buttom">＜＜デザイン一覧を見る</a>
+                    </div>
+                    <div class="click_list_body">
+                        <a href=""><img class="click_design" src="{%static 'img/３P料金.png'%}" alt=""></a>
+                        <h2 class="click_text">料金プラン</h2>
+                        <h5 class="click_text_sub">Webデザインからサーバーへのデプロイまでを市場価格を大幅に下回る価格で提供しています！理由と内訳を明記しているのでぜひご覧ください。</h5>
+                        <a href="/" class="click_buttom">＜＜料金一覧を見る</a>
+                    </div>
+                    <div class="click_list_body">
+                        <a href=""><img class="click_design" src="{%static 'img/3P作成.png'%}" alt=""></a>
+                        <h2 class="click_text">作成依頼</h2>
+                        <h5 class="click_text_sub">サイト設計、Webデザイン、コーディング、サーバーデプロイ、ドメイン取得までを最短で依頼できます。決済はクレジットカードです。</h5>
+                        <a href="/" class="click_buttom">＜＜作成依頼を見る</a>
+                    </div>
+                </div>
+                    <div class="what_3P_body">
+                        <h2 class="what_title">３P Web作成とは</h2>
+                        <div class="what_3P_left">
+                            <h2 class="what_text">
+                                ３P Web作成は３ページまでのWebサイト作成サービスです。　<br>
+                                本来なら相談・依頼、設計、デザイン、コーディング、デプロイ、ドメイン取得、QR発行まで長い時間と数十万〜数百万の費用がかかります。３P Web作成では個人や項目が少ないけど、クオリティ高いWebページを簡単にお手頃価格で作成依頼できます。また名刺やパンフレット、チラシなどにも使えるQRコードも発行されます。作成依頼もフォーム入力だけなので簡単にWeb作成をできます。<br>
+                                ３PのWeb作成なのでイベントや店舗、PR、広告など必要最低限の作成、トップページやランディングページ、まとめページなどの作成に便利です。
+                            </h2>
+                        </div>
+                        <img class="what_img" src="{%static 'img/what_3P.jpg'%}" alt="">
+                    </div>
+
+                <div class="good_3P_all">
+                    <h2 class="what_title">３P Web作成を使うメリット</h2>
+
+                    <div class="good_3P_body">
+                        <div class="good_3P_left">
+                            <h2 class="good_title">一括した作成</h2>
+                            <h5 class="good_text">Web作成を依頼すると発注から制作まで様々な過程を通じてWeb作成をします。<br>
+                                具体的には、発注段階で依頼、面談、見積もり。作成段階ではサイト設計、Webデザイン、コーディング、デプロイ、ドメイン取得、テスティングなど複数の行程があります。<br><br>
+                                ３P Web作成では作成依頼をお申し込みフォームに入力するだけでWeb公開までを行います。</h5>
+                        </div>
+                        <div class="good_3P_right">
+                            <img class="good_img" src="{%static 'img/3P_useful.jpg'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="good_3P_body">
+                        <div class="good_3P_left">
+                            <h2 class="good_title">お手軽な料金</h2>
+                            <h5 class="good_text">Web作成を依頼する場合、右記のような料金が発生します。（クラウドソーシングからの参考）
+                                ３P Webデザインでは公開までの料金を全て含みの料金で提供しています。</h5>
+                        </div>
+                        <div class="good_3P_right">
+                            <img class="good_img" src="{%static 'img/3P_plan_cw.jpg'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="good_3P_body">
+                        <div class="good_3P_left">
+                            <h2 class="good_title">簡単な作成依頼</h2>
+                            <h5 class="good_text">３P Web作成の依頼では面倒臭い手間隙がかかる作成依頼ではなく、作成フォームに必要な項目を入力して頂くだけで依頼できます。<br>
+                                また、全て一括で作成するので１週間弱で公開できます。</h5>
+                        </div>
+                        <div class="good_3P_right">
+                            <img class="good_img" src="{%static 'img/3P_form.jpg'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="good_3P_body">
+                        <div class="good_3P_left">
+                            <h2 class="good_title">QR・ドメインを発行できる</h2>
+                            <h5 class="good_text">３P Web作成ではサイト公開までをお手伝いするだけでなく、ドメイン取得とQRコードの取得までをお手伝いします。<br>
+                                ドメインとQRはチラシや名刺、広告などに使う際にも便利です。</h5>
+                        </div>
+                        <div class="good_3P_right">
+                            <img class="good_img" src="{%static 'img/3P_dm_qr.jpg'%}" alt="">
+                        </div>
+                    </div>
+                    <div class="good_3P_body">
+                        <div class="good_3P_left">
+                            <h2 class="good_title">１週間での公開</h2>
+                            <h5 class="good_text">３P Web作成の依頼では全て一括で作成するので１週間弱で公開できます。<br>
+                                早くWebページを作成したいという方々にぴったりなプランです。</h5>
+                        </div>
+                        <div class="good_3P_right">
+                            <img class="good_img" src="{%static 'img/3P_oneweek.jpg'%}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="right_main_body">
+                {% block infomation %}
+                {% endblock %}
+                
+                {% block sample %}
+                {% endblock %}
+
+            </div>
+            
+            <div class="example_all">
+                <h2 class="example_title_main">３P Web作成の利用例</h2>
+
+                <div class="example_body">
+                    <img class="example_img" src="{%static 'img/3P_ivent_scr.png'%}" alt="">
+                    <h4 class="example_title">イベントページ</h4>
+                    <h5 class="example_text">
+                        学校行事のPRや地元のお祭りなどイベントに最適です。QRコードも発行するのでチラシや広告にも載せられます。３P Webデザインは一年更新なので短期間だけWebページが欲しい方にぴったりです。
+                    </h5>
+
+                </div>
+                <div class="example_body">
+                    <img class="example_img" src="{%static 'img/3P_shop_scr.png'%}" alt="">
+                    <h4 class="example_title">店舗ページ</h4>
+                    <h5 class="example_text">
+                        店舗のランディングページや新商品の広告ページ、お店のホームページなど店舗経営をされている方にも最適です。QRコードも発行するのでチラシや広告にも載せられます。
+                    </h5>
+
+                </div>
+                <div class="example_body">
+                    <img class="example_img" src="{%static 'img/3P_item_scr.png'%}" alt="">
+                    <h4 class="example_title">商品ページ</h4>
+                    <h5 class="example_text">
+                        新商品などの一つのものだけのためにWebサイトを作る時も最適です。商品の写真とPR項目を入力するだけで作成が可能です。
+                    </h5>
+
+                </div>
+                <div class="example_body">
+                    <img class="example_img" src="{%static 'img/3P_parsonal_scr.png'%}" alt="">
+                    <h4 class="example_title">新規/個人事業ページ</h4>
+                    <h5 class="example_text">
+                        個人事業を経営している方や起業しようとしている方は大企業のような複雑なホームページはいらないけど自社サイトは欲しいと思う方にぴったりです。
+                    </h5>
+
+                </div>
+                <div class="example_body">
+                    <img class="example_img" src="{%static 'img/3P_port_scr.png'%}" alt="">
+                    <h4 class="example_title">ポートフォリオページ</h4>
+                    <h5 class="example_text">
+                        個人で活動してる方のまとめ・ポートフォリオページとしてもぴったりです。SNSや各活動サイトのリンクなど他サイトにもリンクで飛ばすことが可能です。個人にも優しい作成料金です。
+                    </h5>
+
+                </div>
+                <div class="example_body">
+                    <img class="example_img" src="{%static 'img/3P_PR_scr.png'%}" alt="">
+                    <h4 class="example_title">PRページ</h4>
+                    <h5 class="example_text">地元の観光スポットの紹介や施設PRのWeb作成にも最適です。QRコードも発行するのでチラシや広告にも載せられます。 学校行事のPRや地元のお祭りなどイベントに最適です。QRコードも発行するのでチラシや広告にも載せられます。３P Webデザインは一年更新なので短期間だけWebページが欲しい方にぴったりです。
+                    </h5>
+
+                </div>
+
+            </div>
+            
+            <div class="click_list_all">
+                <div class="click_list_body">
+                    <img class="click_design" src="{%static 'img/three_list_title_アートボード 1.png'%}" alt="">
+                    <h2 class="click_text">デザイン一覧</h2>
+                    <h5 class="click_text_sub">他種多様なWebデザインのテンプレートの一覧です。あなたがWeb作成を依頼するときの参考になります。</h5>
+                    <a href="/" class="click_buttom">＜＜デザイン一覧を見る</a>
+                </div>
+                <div class="click_list_body">
+                    <img class="click_design" src="{%static 'img/３P料金.png'%}" alt="">
+                    <h2 class="click_text">料金プラン</h2>
+                    <h5 class="click_text_sub">Webデザインからサーバーへのデプロイまでを市場価格を大幅に下回る価格で提供しています！理由と内訳を明記しているのでぜひご覧ください。</h5>
+                    <a href="/" class="click_buttom">＜＜料金一覧を見る</a>
+                </div>
+                <div class="click_list_body">
+                    <img class="click_design" src="{%static 'img/3P作成.png'%}" alt="">
+                    <h2 class="click_text">作成依頼</h2>
+                    <h5 class="click_text_sub">サイト設計、Webデザイン、コーディング、サーバーデプロイ、ドメイン取得までを最短で依頼できます。決済はクレジットカードです。</h5>
+                    <a href="/" class="click_buttom">＜＜作成依頼を見る</a>
+                </div>
+            </div>
+
+        </main>
+    
+        {% block extra_js %}
+        {% endblock %}
+        <footer class="footer_all">
+            <div class="footer">
+                <div class="footer_title">
+                    <img class="footer_img" src="{%static 'img/Kydolex.full.log.white.png'%}" alt="">
+                    <div class="footer_title_sub">〜 Make your life more exciting 〜</div>
+                </div>
+                <div class="footer_text_body">
+                    <div class="footer_text">
+                        <a class="footer_text_text" href="/">企業概要</a>
+                        <a class="footer_text_text" href="/">企業代表者</a>
+                        <a class="footer_text_text" href="/">企業理念</a>
+                        <a class="footer_text_text" href="/">事業内容</a>
+                        <a class="footer_text_text" href="/">最新情報</a>
+                        <a class="footer_text_text" href="/">ギャラリー</a>
+                        <a class="footer_text_text" href="/">販売サイト</a>
+                        <a class="footer_text_text" href="/">宣伝媒体</a>
+                        <a class="footer_text_text" href="/">作成料金</a>
+                        <a class="footer_text_text" href="/">作成予約</a>
+                        <a class="footer_text_text" href="/">作成相談</a>
+                        <a class="footer_text_text" href="/">作成依頼</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</div>
+
 
 </html>
