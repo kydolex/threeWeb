@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="shortcut icon" href="{%static 'img/3P Web_faviocon.png'%}">
@@ -151,8 +150,10 @@
 
 
             <div class="right_main_body">
-                {% block infomation %}
-                {% endblock %}
+                <div class="margin_bottom">
+                    {% block infomation %}
+                    {% endblock %}
+                </div>
                 
                 {% block sample %}
                 {% endblock %}
@@ -237,6 +238,9 @@
     
         {% block extra_js %}
         {% endblock %}
+        <script type="text/javascript" src="{% static 'js/script.js' %}">
+
+        </script>
         <footer class="footer_all">
             <div class="footer">
                 <div class="footer_title">
